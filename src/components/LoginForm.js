@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button } from './common';
 import emailChanged from '../actions';
-import { thisExpression } from '@babel/types';
 
 class LoginForm extends Component {
   render() {
