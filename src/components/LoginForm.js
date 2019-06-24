@@ -39,7 +39,6 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
-        <Header headerText='my app' />
         <CardSection>
           <Input
             label='email'
