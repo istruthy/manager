@@ -1,34 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
-import {
-  API_KEY,
-  AUTH_DOMAIN,
-  DATABSE_URL,
-  PROJECT_ID,
-  STORAGE_BUCKET,
-  MESSAGE_SENDER_ID,
-  APP_ID,
-} from '../../authSettings';
 
 import { Card, CardSection, Input, Button, Header } from './common';
-import { emailChanged, passwordChanged } from '../actions';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 class LoginForm extends Component {
-  componentWillMount() {
-    const firebaseConfig = {
-      apiKey: API_KEY,
-      authDomain: AUTH_DOMAIN,
-      databaseURL: DATABSE_URL,
-      projectId: PROJECT_ID,
-      storageBucket: STORAGE_BUCKET,
-      messagingSenderId: MESSAGE_SENDER_ID,
-      appId: APP_ID,
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  }
-
   onEmailChange = text => {
     this.props.emailChanged(text);
   };
@@ -36,6 +12,12 @@ class LoginForm extends Component {
   onPasswordChange = text => {
     this.props.passwordChanged(text);
   };
+
+  onButtonPress = () => {
+    const { email, password } = this.props;
+    this.props.loginUser({ email, password });
+  };
+
   render() {
     return (
       <Card>
@@ -58,7 +40,7 @@ class LoginForm extends Component {
           />
         </CardSection>
         <CardSection>
-          <Button>Login</Button>
+          <Button onPress={this.onButtonPress}>Login</Button>
         </CardSection>
       </Card>
     );
@@ -77,5 +59,6 @@ export default connect(
   {
     emailChanged,
     passwordChanged,
+    loginUser,
   },
 )(LoginForm);
