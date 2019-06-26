@@ -25,7 +25,7 @@ class EmployeeCreate extends Component {
           />
         </CardSection>
         <CardSection style={{ flexDirection: 'column' }}>
-          <Text style={styles.pickerTextstyle}>Select Shift</Text>
+          <Text style={styles.pickerTextstyle}>Select Day</Text>
           <Picker
             selectedValue={this.props.shift}
             onValueChange={day => this.props.employeeUpdate({ prop: 'shift', value: day })}
