@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
+// import { employeeCreate } from '../actions';
+import { Actions } from 'react-native-router-flux';
 
 class ListItem extends Component {
   onRowPress = () => {
-    Actions.employeeEdit({ employee: this.props.employee });
+    Actions.employeeCreate();
   };
 
   render() {
